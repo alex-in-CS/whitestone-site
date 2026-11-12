@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Element Group">
+<circle id="Dot 1" cx="8" cy="8" r="2" fill="#FF3C35"/>
+<circle id="Dot 2" cx="8" cy="8" r="4.5" stroke="#FF3C35" stroke-opacity="0.5"/>
+<circle id="Circle" cx="8" cy="8" r="7.5" stroke="#FF3C35" stroke-opacity="0.12"/>
+</g>
+</svg>

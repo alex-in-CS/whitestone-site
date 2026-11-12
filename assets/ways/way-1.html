@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Feature Sprint · Whitestone Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Rajdhani:wght@600;700&display=swap">
+<style>
+html,body{margin:0;background:#f9fafb}
+body{min-height:100vh;display:grid;place-items:center}
+/* Contenedor responsive: ocupa el ancho disponible manteniendo 480:501 */
+.aller-g-embed{width:min(100%,480px);aspect-ratio:480/501;position:relative;overflow:hidden}
+.aller-g-embed>.aller-g{position:absolute;left:0;top:0;transform:scale(var(--s,1))}
+/* Stage de render para video (?stage=1080x1350) */
+body.stage{display:block;min-height:0;overflow:hidden}
+body.stage .aller-g-embed{position:absolute;width:auto;max-width:none}
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-scale-x:1;--tw-scale-y:1;--tw-scale-z:1;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-border-style:solid;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial}}}@layer theme{:root,:host{--color-white:#fff;--spacing:.25rem;--font-weight-medium:500}}@layer utilities{.pointer-events-none{pointer-events:none}.visible{visibility:visible}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.inset-\[-0\.5px_0_0_0\]{inset:-.5px 0 0}.inset-\[-0\.81\%_-1\.23\%\]{inset:-.81% -1.23%}.inset-\[-1\.63\%_-0\.4\%_-0\.61\%_-0\.4\%\]{inset:-1.63% -.4% -.61%}.inset-\[-1px_0_0_0\]{inset:-1px 0 0}.inset-\[-2\.4\%_-6\.25\%_-5\.36\%_-6\.25\%\]{inset:-2.4% -6.25% -5.36%}.inset-\[-2\.17\%_-3\.75\%_-5\.91\%_-4\.59\%\]{inset:-2.17% -3.75% -5.91% -4.59%}.inset-\[-2\.54\%_-1\.59\%_-14\.18\%_0\]{inset:-2.54% -1.59% -14.18% 0}.inset-\[-3\.08\%_-0\.36\%\]{inset:-3.08% -.36%}.inset-\[-3\.12\%_-2\.81\%\]{inset:-3.12% -2.81%}.inset-\[-3\.13\%_-3\.22\%_-3\.12\%_-3\.21\%\]{inset:-3.13% -3.22% -3.12% -3.21%}.inset-\[-4\.09\%_-0\.69\%_-4\.12\%_-0\.1\%\]{inset:-4.09% -.69% -4.12% -.1%}.inset-\[-4\.17\%\]{inset:-4.17%}.inset-\[-4\.17\%_-3\.75\%\]{inset:-4.17% -3.75%}.inset-\[-4\.42\%_-4\.4\%_-4\.43\%_-4\.41\%\]{inset:-4.42% -4.4% -4.43% -4.41%}.inset-\[-4\.44\%_-5\%\]{inset:-4.44% -5%}.inset-\[-4\.69\%_0_-4\.69\%_-0\.49\%\]{inset:-4.69% 0 -4.69% -.49%}.inset-\[-5\.36\%_-6\.25\%_-2\.4\%_-6\.25\%\]{inset:-5.36% -6.25% -2.4%}.inset-\[-5\.52px_-1\.43\%\]{inset:-5.52px -1.43%}.inset-\[-5\.52px_-2\.5\%\]{inset:-5.52px -2.5%}.inset-\[-5\.52px_-3\.85\%\]{inset:-5.52px -3.85%}.inset-\[-7\.14\%\]{inset:-7.14%}.inset-\[-9\.31\%_-4\.17\%_-9\.44\%_-9\.37\%\]{inset:-9.31% -4.17% -9.44% -9.37%}.inset-\[-10\.96\%_-3\.49\%_-2\.58\%_-4\.92\%\]{inset:-10.96% -3.49% -2.58% -4.92%}.inset-\[-13\.24\%_-8\.82\%\]{inset:-13.24% -8.82%}.inset-\[-14px_-5\.36\%_-12px_-5\.36\%\]{inset:-14px -5.36% -12px}.inset-\[-18\.11\%_-1\.85\%_-3\.14\%_-2\.37\%\]{inset:-18.11% -1.85% -3.14% -2.37%}.inset-\[-21\.24\%_-1\.79\%_-2\.88\%_-2\.04\%\]{inset:-21.24% -1.79% -2.88% -2.04%}.inset-\[-29\.99\%_0\]{inset:-29.99% 0}.inset-\[-70\.57\%_-18\.44\%_-70\.81\%_-18\.17\%\]{inset:-70.57% -18.44% -70.81% -18.17%}.inset-\[-466\.67\%_-22\.22\%\]{inset:-466.67% -22.22%}.inset-\[-466\.67\%_-28\.28\%\]{inset:-466.67% -28.28%}.inset-\[-466\.67\%_-35\.22\%\]{inset:-466.67% -35.22%}.inset-\[-1666\.67\%_-59\.52\%\]{inset:-1666.67% -59.52%}.inset-\[-1666\.67\%_-75\.76\%\]{inset:-1666.67% -75.76%}.inset-\[-1666\.67\%_-95\.24\%\]{inset:-1666.67% -95.24%}.inset-\[0_-0\.4\%_-0\.61\%_-0\.4\%\]{inset:0 -.4% -.61%}.inset-\[0_0_-0\.94\%_0\]{inset:0 0 -.94%}.inset-\[9\.38\%\]{inset:9.38%}.inset-\[9\.38\%_9\.38\%_9\.37\%_9\.38\%\]{inset:9.38% 9.38% 9.37%}.inset-\[9\.39\%_9\.39\%_9\.37\%_9\.38\%\]{inset:9.39% 9.39% 9.37% 9.38%}.inset-\[9\.69\%_9\.69\%_9\.85\%_9\.68\%\]{inset:9.69% 9.69% 9.85% 9.68%}.inset-\[12\.5\%\]{inset:12.5%}.inset-\[12\.5\%_8\.33\%_12\.48\%_8\.33\%\]{inset:12.5% 8.33% 12.48%}.inset-\[12\.62\%_12\.5\%\]{inset:12.62% 12.5%}.inset-\[13\.93\%_24\.79\%_13\.93\%_24\.23\%\]{inset:13.93% 24.79% 13.93% 24.23%}.inset-\[30\.56\%_27\.96\%_36\.11\%_30\.36\%\]{inset:30.56% 27.96% 36.11% 30.36%}.inset-\[33\.33\%\]{inset:33.33%}.inset-\[33\.33\%_29\.56\%_38\.89\%_30\.75\%\]{inset:33.33% 29.56% 38.89% 30.75%}.top-0{top:0}.top-1{top:var(--spacing)}.top-1\/2{top:50%}.top-\[-8\.1\%\]{top:-8.1%}.top-\[0\.97\%\]{top:.97%}.top-\[1\.49px\]{top:1.49px}.top-\[2\.5px\]{top:2.5px}.top-\[3px\]{top:3px}.top-\[4px\]{top:4px}.top-\[6px\]{top:6px}.top-\[7\.89px\]{top:7.89px}.top-\[7px\]{top:7px}.top-\[8px\]{top:8px}.top-\[9px\]{top:9px}.top-\[10px\]{top:10px}.top-\[11px\]{top:11px}.top-\[12px\]{top:12px}.top-\[14px\]{top:14px}.top-\[15px\]{top:15px}.top-\[16px\]{top:16px}.top-\[19px\]{top:19px}.top-\[20\.83\%\]{top:20.83%}.top-\[21px\]{top:21px}.top-\[22px\]{top:22px}.top-\[23px\]{top:23px}.top-\[24px\]{top:24px}.top-\[26px\]{top:26px}.top-\[27px\]{top:27px}.top-\[30px\]{top:30px}.top-\[31px\]{top:31px}.top-\[32px\]{top:32px}.top-\[33px\]{top:33px}.top-\[34px\]{top:34px}.top-\[35px\]{top:35px}.top-\[37px\]{top:37px}.top-\[38px\]{top:38px}.top-\[39px\]{top:39px}.top-\[40px\]{top:40px}.top-\[41px\]{top:41px}.top-\[42px\]{top:42px}.top-\[44px\]{top:44px}.top-\[45px\]{top:45px}.top-\[46px\]{top:46px}.top-\[47px\]{top:47px}.top-\[48px\]{top:48px}.top-\[50px\]{top:50px}.top-\[52px\]{top:52px}.top-\[55px\]{top:55px}.top-\[56px\]{top:56px}.top-\[57px\]{top:57px}.top-\[59px\]{top:59px}.top-\[62px\]{top:62px}.top-\[68px\]{top:68px}.top-\[73px\]{top:73px}.top-\[76px\]{top:76px}.top-\[81\.16px\]{top:81.16px}.top-\[85px\]{top:85px}.top-\[92px\]{top:92px}.top-\[93px\]{top:93px}.top-\[97px\]{top:97px}.top-\[100px\]{top:100px}.top-\[101px\]{top:101px}.top-\[105px\]{top:105px}.top-\[107px\]{top:107px}.top-\[113px\]{top:113px}.top-\[114px\]{top:114px}.top-\[118px\]{top:118px}.top-\[119px\]{top:119px}.top-\[121px\]{top:121px}.top-\[129\.5px\]{top:129.5px}.top-\[130px\]{top:130px}.top-\[131px\]{top:131px}.top-\[142px\]{top:142px}.top-\[153px\]{top:153px}.top-\[156px\]{top:156px}.top-\[158px\]{top:158px}.top-\[159px\]{top:159px}.top-\[161px\]{top:161px}.top-\[163px\]{top:163px}.top-\[164px\]{top:164px}.top-\[189px\]{top:189px}.top-\[191px\]{top:191px}.top-\[200px\]{top:200px}.top-\[203px\]{top:203px}.top-\[206px\]{top:206px}.top-\[210px\]{top:210px}.top-\[214px\]{top:214px}.top-\[218px\]{top:218px}.top-\[222px\]{top:222px}.top-\[223px\]{top:223px}.top-\[234px\]{top:234px}.top-\[239px\]{top:239px}.top-\[242px\]{top:242px}.top-\[246px\]{top:246px}.top-\[262px\]{top:262px}.top-\[281px\]{top:281px}.top-\[290px\]{top:290px}.top-\[337px\]{top:337px}.right-1{right:var(--spacing)}.right-1\/4{right:25%}.bottom-\[20\.83\%\]{bottom:20.83%}.left-0{left:0}.left-1{left:var(--spacing)}.left-1\/2{left:50%}.left-1\/4{left:25%}.left-\[-11px\]{left:-11px}.left-\[1\.47px\]{left:1.47px}.left-\[3\.33px\]{left:3.33px}.left-\[3px\]{left:3px}.left-\[4\.5px\]{left:4.5px}.left-\[4px\]{left:4px}.left-\[5px\]{left:5px}.left-\[6px\]{left:6px}.left-\[7px\]{left:7px}.left-\[8\.5px\]{left:8.5px}.left-\[8px\]{left:8px}.left-\[10px\]{left:10px}.left-\[11px\]{left:11px}.left-\[12px\]{left:12px}.left-\[13px\]{left:13px}.left-\[14px\]{left:14px}.left-\[15px\]{left:15px}.left-\[16px\]{left:16px}.left-\[17px\]{left:17px}.left-\[18px\]{left:18px}.left-\[19px\]{left:19px}.left-\[21px\]{left:21px}.left-\[23px\]{left:23px}.left-\[24\.5px\]{left:24.5px}.left-\[24px\]{left:24px}.left-\[25px\]{left:25px}.left-\[26px\]{left:26px}.left-\[27px\]{left:27px}.left-\[33px\]{left:33px}.left-\[35px\]{left:35px}.left-\[39px\]{left:39px}.left-\[41\.5px\]{left:41.5px}.left-\[41px\]{left:41px}.left-\[44px\]{left:44px}.left-\[47px\]{left:47px}.left-\[57\.5px\]{left:57.5px}.left-\[57px\]{left:57px}.left-\[58px\]{left:58px}.left-\[66\.5px\]{left:66.5px}.left-\[67px\]{left:67px}.left-\[71px\]{left:71px}.left-\[74\.5px\]{left:74.5px}.left-\[74px\]{left:74px}.left-\[75px\]{left:75px}.left-\[79px\]{left:79px}.left-\[80px\]{left:80px}.left-\[88px\]{left:88px}.left-\[90\.5px\]{left:90.5px}.left-\[91px\]{left:91px}.left-\[92\.76px\]{left:92.76px}.left-\[96px\]{left:96px}.left-\[98px\]{left:98px}.left-\[99px\]{left:99px}.left-\[105px\]{left:105px}.left-\[114\.5px\]{left:114.5px}.left-\[114px\]{left:114px}.left-\[128px\]{left:128px}.left-\[131px\]{left:131px}.left-\[136\.5px\]{left:136.5px}.left-\[136px\]{left:136px}.left-\[138px\]{left:138px}.left-\[146px\]{left:146px}.left-\[154\.75px\]{left:154.75px}.left-\[156px\]{left:156px}.left-\[161px\]{left:161px}.left-\[163px\]{left:163px}.left-\[172\.5px\]{left:172.5px}.left-\[179px\]{left:179px}.left-\[185px\]{left:185px}.left-\[188px\]{left:188px}.left-\[211px\]{left:211px}.left-\[227px\]{left:227px}.left-\[246px\]{left:246px}.left-\[320px\]{left:320px}.left-\[322px\]{left:322px}.left-\[323\.5px\]{left:323.5px}.left-\[324px\]{left:324px}.left-\[328px\]{left:328px}.left-\[336px\]{left:336px}.left-\[337px\]{left:337px}.left-\[344px\]{left:344px}.left-\[349px\]{left:349px}.left-\[352px\]{left:352px}.left-\[368px\]{left:368px}.left-\[376px\]{left:376px}.left-\[384px\]{left:384px}.left-\[399px\]{left:399px}.left-\[423px\]{left:423px}.left-\[427px\]{left:427px}.left-\[451px\]{left:451px}.left-\[calc\(50\%\+0\.13px\)\]{left:calc(50% + .13px)}.left-\[calc\(50\%\+0\.38px\)\]{left:calc(50% + .38px)}.left-\[calc\(50\%-0\.5px\)\]{left:calc(50% - .5px)}.left-\[calc\(50\%-0\.13px\)\]{left:calc(50% - .13px)}.left-\[calc\(50\%-0\.38px\)\]{left:calc(50% - .38px)}.left-\[calc\(50\%-9px\)\]{left:calc(50% - 9px)}.left-\[calc\(50\%-14px\)\]{left:calc(50% - 14px)}.left-\[calc\(50\%-15px\)\]{left:calc(50% - 15px)}.left-\[calc\(50\%-22px\)\]{left:calc(50% - 22px)}.left-\[calc\(50\%-38px\)\]{left:calc(50% - 38px)}.left-\[calc\(50\%-58px\)\]{left:calc(50% - 58px)}.mr-\[-8px\]{margin-right:-8px}.block{display:block}.contents{display:contents}.flex{display:flex}.size-\[3px\]{width:3px;height:3px}.size-\[4px\]{width:4px;height:4px}.size-\[6\.5px\]{width:6.5px;height:6.5px}.size-\[6px\]{width:6px;height:6px}.size-\[7px\]{width:7px;height:7px}.size-\[8px\]{width:8px;height:8px}.size-\[10px\]{width:10px;height:10px}.size-\[12px\]{width:12px;height:12px}.size-\[13px\]{width:13px;height:13px}.size-\[14px\]{width:14px;height:14px}.size-\[16px\]{width:16px;height:16px}.size-\[20px\]{width:20px;height:20px}.size-\[24px\]{width:24px;height:24px}.size-\[40px\]{width:40px;height:40px}.size-full{width:100%;height:100%}.size-px{width:1px;height:1px}.h-0{height:0}.h-\[2\.5px\]{height:2.5px}.h-\[3px\]{height:3px}.h-\[4px\]{height:4px}.h-\[6px\]{height:6px}.h-\[12px\]{height:12px}.h-\[13\.02px\]{height:13.02px}.h-\[13px\]{height:13px}.h-\[15px\]{height:15px}.h-\[16px\]{height:16px}.h-\[17px\]{height:17px}.h-\[18\.114px\]{height:18.114px}.h-\[18px\]{height:18px}.h-\[19px\]{height:19px}.h-\[23px\]{height:23px}.h-\[24px\]{height:24px}.h-\[26px\]{height:26px}.h-\[29\.556px\]{height:29.556px}.h-\[30\.5px\]{height:30.5px}.h-\[30px\]{height:30px}.h-\[32px\]{height:32px}.h-\[33\.379px\]{height:33.379px}.h-\[41px\]{height:41px}.h-\[42\.274px\]{height:42.274px}.h-\[43\.263px\]{height:43.263px}.h-\[44\.676px\]{height:44.676px}.h-\[52px\]{height:52px}.h-\[56px\]{height:56px}.h-\[58\.5px\]{height:58.5px}.h-\[60px\]{height:60px}.h-\[61px\]{height:61px}.h-\[72px\]{height:72px}.h-\[78px\]{height:78px}.h-\[119px\]{height:119px}.h-\[123px\]{height:123px}.h-\[130px\]{height:130px}.h-\[133\.93\%\]{height:133.93%}.h-\[135px\]{height:135px}.h-\[152\%\]{height:152%}.h-\[160px\]{height:160px}.h-\[200px\]{height:200px}.h-\[224px\]{height:224px}.h-full{height:100%}.min-h-px{min-height:1px}.w-0{width:0}.w-\[6px\]{width:6px}.w-\[13\.057px\]{width:13.057px}.w-\[13\.333px\]{width:13.333px}.w-\[16px\]{width:16px}.w-\[17px\]{width:17px}.w-\[19\.5px\]{width:19.5px}.w-\[19px\]{width:19px}.w-\[20px\]{width:20px}.w-\[21\.5px\]{width:21.5px}.w-\[21px\]{width:21px}.w-\[24px\]{width:24px}.w-\[27px\]{width:27px}.w-\[30px\]{width:30px}.w-\[33px\]{width:33px}.w-\[34px\]{width:34px}.w-\[35px\]{width:35px}.w-\[36px\]{width:36px}.w-\[37px\]{width:37px}.w-\[39px\]{width:39px}.w-\[40\.5px\]{width:40.5px}.w-\[42px\]{width:42px}.w-\[43px\]{width:43px}.w-\[46px\]{width:46px}.w-\[47\.5px\]{width:47.5px}.w-\[47\.197px\]{width:47.197px}.w-\[47px\]{width:47px}.w-\[49\.491px\]{width:49.491px}.w-\[51px\]{width:51px}.w-\[52\.5px\]{width:52.5px}.w-\[56px\]{width:56px}.w-\[57px\]{width:57px}.w-\[58px\]{width:58px}.w-\[66\.5px\]{width:66.5px}.w-\[67px\]{width:67px}.w-\[68px\]{width:68px}.w-\[69px\]{width:69px}.w-\[70px\]{width:70px}.w-\[71\.114px\]{width:71.114px}.w-\[71px\]{width:71px}.w-\[72px\]{width:72px}.w-\[74\.35px\]{width:74.35px}.w-\[75px\]{width:75px}.w-\[76px\]{width:76px}.w-\[78px\]{width:78px}.w-\[80px\]{width:80px}.w-\[83px\]{width:83px}.w-\[88px\]{width:88px}.w-\[90\.5px\]{width:90.5px}.w-\[93px\]{width:93px}.w-\[96px\]{width:96px}.w-\[105px\]{width:105px}.w-\[115\.5px\]{width:115.5px}.w-\[116px\]{width:116px}.w-\[120px\]{width:120px}.w-\[129px\]{width:129px}.w-\[132px\]{width:132px}.w-\[159px\]{width:159px}.w-\[160px\]{width:160px}.w-\[168px\]{width:168px}.w-\[170px\]{width:170px}.w-\[186px\]{width:186px}.w-\[198px\]{width:198px}.w-\[199px\]{width:199px}.w-\[224px\]{width:224px}.w-\[252px\]{width:252px}.w-full{width:100%}.max-w-none{max-width:none}.min-w-px{min-width:1px}.flex-\[1_0_0\]{flex:1 0 0}.flex-none{flex:none}.shrink-0{flex-shrink:0}.-translate-x-1{--tw-translate-x:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-x-1\/2{--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1{--tw-translate-y:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1\/2{--tw-translate-y:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-scale-y-100{--tw-scale-y:calc(100% * -1);scale:var(--tw-scale-x) var(--tw-scale-y)}.scale-y-99{--tw-scale-y:99%;scale:var(--tw-scale-x) var(--tw-scale-y)}.rotate-9{rotate:9deg}.rotate-90{rotate:90deg}.rotate-180{rotate:180deg}.rotate-\[-10\.3deg\]{rotate:-10.3deg}.rotate-\[4\.77deg\]{rotate:4.77deg}.-skew-x-4{--tw-skew-x:skewX(calc(4deg * -1));transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.skew-x-9{--tw-skew-x:skewX(9deg);transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.flex-col{flex-direction:column}.items-center{align-items:center}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-\[2px\]{gap:2px}.gap-\[4px\]{gap:4px}.gap-\[5px\]{gap:5px}.gap-\[8px\]{gap:8px}.overflow-clip{overflow:clip}.overflow-hidden{overflow:hidden}.rounded-\[1\.412px\]{border-radius:1.412px}.rounded-\[4px\]{border-radius:4px}.rounded-\[6px\]{border-radius:6px}.rounded-\[8px\]{border-radius:8px}.rounded-\[9px\]{border-radius:9px}.rounded-\[24px\]{border-radius:24px}.rounded-\[270\.563px\]{border-radius:270.563px}.rounded-\[var\(--xl\,8px\)\]{border-radius:var(--xl,8px)}.rounded-full{border-radius:3.40282e38px}.border{border-style:var(--tw-border-style);border-width:1px}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-\[0\.406px\]{border-style:var(--tw-border-style);border-width:.406px}.border-\[1\.059px\]{border-style:var(--tw-border-style);border-width:1.059px}.border-solid{--tw-border-style:solid;border-style:solid}.border-\[\#121212\]{border-color:#121212}.border-\[\#ecfe8e\]{border-color:#ecfe8e}.border-\[\#f2f4f5\]{border-color:#f2f4f5}.border-white{border-color:var(--color-white)}.bg-\[\#646aed\]{background-color:#646aed}.bg-\[\#121212\]{background-color:#121212}.bg-\[\#d5fe00\]{background-color:#d5fe00}.bg-\[\#d6d6d6\]{background-color:#d6d6d6}.bg-\[\#dadee2\]{background-color:#dadee2}.bg-\[\#f2f4f5\]{background-color:#f2f4f5}.bg-\[\#f9fafb\]{background-color:#f9fafb}.bg-\[rgba\(255\,255\,255\,0\.72\)\]{background-color:#ffffffb8}.bg-\[rgba\(255\,255\,255\,0\.88\)\]{background-color:#ffffffe0}.bg-\[rgba\(255\,255\,255\,0\.96\)\]{background-color:#fffffff5}.bg-\[var\(--color\\\/grayscale\\\/surface\\\/bg-1\,\#f9fafb\)\]{background-color:var(--color\/grayscale\/surface\/bg-1,#f9fafb)}.bg-white{background-color:var(--color-white)}.bg-gradient-to-b{--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.from-\[\#d6d6d6\]{--tw-gradient-from:#d6d6d6;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\[\#ecfe8e\]{--tw-gradient-from:#ecfe8e;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\[\#b8b8b8\]{--tw-gradient-to:#b8b8b8;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\[\#d5fe00\]{--tw-gradient-to:#d5fe00;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.object-cover{object-fit:cover}.p-\[2px\]{padding:2px}.p-\[4px\]{padding:4px}.p-\[8px\]{padding:8px}.px-\[13px\]{padding-inline:13px}.px-\[24px\]{padding-inline:24px}.py-\[3\.25px\]{padding-block:3.25px}.py-\[8px\]{padding-block:8px}.text-\[3\.25px\]{font-size:3.25px}.text-\[5px\]{font-size:5px}.text-\[6px\]{font-size:6px}.text-\[8px\]{font-size:8px}.text-\[10px\]{font-size:10px}.text-\[16px\]{font-size:16px}.leading-\[0\]{--tw-leading:0;line-height:0}.leading-\[4\.333px\]{--tw-leading:4.333px;line-height:4.333px}.leading-\[8px\]{--tw-leading:8px;line-height:8px}.leading-\[16px\]{--tw-leading:16px;line-height:16px}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.whitespace-nowrap{white-space:nowrap}.whitespace-pre{white-space:pre}.text-\[\#2dc656\]{color:#2dc656}.text-\[\#121212\]{color:#121212}.text-\[\#787878\]{color:#787878}.capitalize{text-transform:capitalize}.mix-blend-plus-lighter{mix-blend-mode:plus-lighter}.shadow-\[0px_3px_2px_0px_rgba\(0\,0\,0\,0\.05\)\,0px_2px_2px_0px_rgba\(0\,0\,0\,0\.09\)\,0px_0px_1px_0px_rgba\(0\,0\,0\,0\.1\)\]{--tw-shadow:0px 3px 2px 0px var(--tw-shadow-color,#0000000d), 0px 2px 2px 0px var(--tw-shadow-color,#00000017), 0px 0px 1px 0px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-\[0px_3px_2px_0px_rgba\(100\,106\,237\,0\.05\)\,0px_2px_2px_0px_rgba\(100\,106\,237\,0\.09\)\,0px_0px_1px_0px_rgba\(100\,106\,237\,0\.1\)\]{--tw-shadow:0px 3px 2px 0px var(--tw-shadow-color,#646aed0d), 0px 2px 2px 0px var(--tw-shadow-color,#646aed17), 0px 0px 1px 0px var(--tw-shadow-color,#646aed1a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-\[0px_3px_2px_0px_rgba\(213\,254\,0\,0\.05\)\,0px_2px_2px_0px_rgba\(213\,254\,0\,0\.09\)\,0px_0px_1px_0px_rgba\(213\,254\,0\,0\.1\)\]{--tw-shadow:0px 3px 2px 0px var(--tw-shadow-color,#d5fe000d), 0px 2px 2px 0px var(--tw-shadow-color,#d5fe0017), 0px 0px 1px 0px var(--tw-shadow-color,#d5fe001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.backdrop-blur-\[6px\]{--tw-backdrop-blur:blur(6px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-scale-x{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-y{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-z{syntax:"*";inherits:false;initial-value:1}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-gradient-position{syntax:"*";inherits:false}@property --tw-gradient-from{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:"*";inherits:false}@property --tw-gradient-via-stops{syntax:"*";inherits:false}@property --tw-gradient-from-position{syntax:"<length-percentage>";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:"<length-percentage>";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:"<length-percentage>";inherits:false;initial-value:100%}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-backdrop-blur{syntax:"*";inherits:false}@property --tw-backdrop-brightness{syntax:"*";inherits:false}@property --tw-backdrop-contrast{syntax:"*";inherits:false}@property --tw-backdrop-grayscale{syntax:"*";inherits:false}@property --tw-backdrop-hue-rotate{syntax:"*";inherits:false}@property --tw-backdrop-invert{syntax:"*";inherits:false}@property --tw-backdrop-opacity{syntax:"*";inherits:false}@property --tw-backdrop-saturate{syntax:"*";inherits:false}@property --tw-backdrop-sepia{syntax:"*";inherits:false}
+/* ── motion system · híbrido: base ambiental + pulso de resultado ──
+   Un ciclo = 6s. Todo el movimiento ambiental usa periodos que dividen 6s
+   (6s · 3s · 2s) para que el loop cierre exacto.
+   Ventana de proceso: 2.4–3.6s · Pulso de resultado: 4.0s                */
+.aller-g{--L:6s;--amb:cubic-bezier(.37,0,.63,1);--pop:cubic-bezier(.16,1,.3,1);
+  position:relative;width:480px;height:501px;overflow:hidden;background:#f9fafb;transform-origin:0 0}
+.aller-g *,.aller-g *::before,.aller-g *::after{box-sizing:border-box;margin:0}
+.aller-g .fx-raj{font-family:Rajdhani,Arial,sans-serif;font-weight:600}
+.aller-g .fx-inter{font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-weight:600}
+.aller-g .fx-shadow{filter:drop-shadow(0 49px 14.5px rgba(0,0,0,.05)) drop-shadow(0 22px 11px rgba(0,0,0,.09)) drop-shadow(0 5px 6px rgba(0,0,0,.1))}
+.aller-g .fx-shadow-sm{filter:drop-shadow(0 18px 5.5px rgba(0,0,0,.05)) drop-shadow(0 8px 4px rgba(0,0,0,.09)) drop-shadow(0 2px 2px rgba(0,0,0,.1))}
+
+/* ── Ambiental ─────────────────────────────────────────── */
+/* 1 · Glow neón respira y se enciende en el resultado */
+.fx-glow{animation:fx-glow var(--L) var(--amb) infinite;transform-origin:50% 50%}
+@keyframes fx-glow{0%,100%{opacity:.7;transform:scaleX(.94)}
+  40%{opacity:.85;transform:scaleX(1)}
+  67%{opacity:1;transform:scaleX(1.12)}
+  85%{opacity:.8;transform:scaleX(1)}}
+
+/* 2 · Tarjetas satélite flotan (±2.5px), cada una con su fase */
+.fx-float{animation:fx-float var(--L) var(--amb) infinite}
+@keyframes fx-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.fx-d1{animation-delay:0s}.fx-d2{animation-delay:-1s}.fx-d3{animation-delay:-2s}
+.fx-d4{animation-delay:-3s}.fx-d5{animation-delay:-4s}.fx-d6{animation-delay:-5s}
+
+/* 3 · Conectores: una banda de señal recorre cada línea punteada (3 por ciclo) */
+.fx-flow img{-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.4) 0 38%,#000 50%,rgba(0,0,0,.4) 62% 100%);
+  mask-image:linear-gradient(90deg,rgba(0,0,0,.4) 0 38%,#000 50%,rgba(0,0,0,.4) 62% 100%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  animation:fx-flow 2s linear infinite}
+.fx-rev img{animation-direction:reverse}
+@keyframes fx-flow{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+
+/* 4 · Puntos de origen de los conectores laten al salir la señal */
+.fx-ping{animation:fx-ping 2s var(--amb) infinite}
+.fx-p1{animation-delay:0s}.fx-p2{animation-delay:-.2s}.fx-p3{animation-delay:-.4s}
+@keyframes fx-ping{0%,100%{transform:scale(1);opacity:1}12%{transform:scale(1.2);opacity:1}40%{transform:scale(1);opacity:.75}}
+
+/* 5 · Partículas del abanico: fluyen continuo hacia abajo (3 por ciclo por línea) */
+.fx-pt{position:absolute;left:0;top:0;width:4px;height:4px;border-radius:50%;background:#646aed;
+  box-shadow:0 0 0 1px rgba(255,255,255,.9),0 0 6px rgba(100,106,237,.55);
+  offset-rotate:0deg;offset-anchor:center;opacity:0;
+  animation:fx-pt-move 2s cubic-bezier(.4,0,.8,1) infinite,fx-pt-fade 2s linear infinite}
+@keyframes fx-pt-move{from{offset-distance:0%}to{offset-distance:100%}}
+@keyframes fx-pt-fade{0%{opacity:0}18%{opacity:1}82%{opacity:1}100%{opacity:0}}
+/* ráfaga sincronizada: todas las líneas llegan juntas al pulso (4.0s) */
+.fx-pt.fx-burst{width:5px;height:5px;background:#646aed;
+  box-shadow:0 0 0 1.5px #fff,0 0 8px 2px rgba(213,254,0,.9);
+  animation:fx-burst var(--L) linear infinite}
+@keyframes fx-burst{0%,52%{offset-distance:0%;opacity:0;animation-timing-function:linear}
+  52.01%{offset-distance:0%;opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,1)}
+  66.67%{offset-distance:100%;opacity:1}
+  69%,100%{offset-distance:100%;opacity:0}}
+
+/* 6 · Nodo de convergencia: respira (3s) + onda de choque en el resultado */
+.fx-node img{animation:fx-node var(--L) var(--amb) infinite}
+@keyframes fx-node{0%,100%{transform:scale(1)}25%{transform:scale(1.08)}50%{transform:scale(1)}
+  64%{transform:scale(.92)}69%{transform:scale(1.28);animation-timing-function:var(--pop)}80%{transform:scale(1)}}
+.fx-shock{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;
+  border:1.5px solid #646aed;box-shadow:0 0 10px rgba(213,254,0,.8),inset 0 0 6px rgba(213,254,0,.6);
+  opacity:0;animation:fx-shock var(--L) linear infinite;pointer-events:none}
+@keyframes fx-shock{0%,66.6%{transform:scale(.4);opacity:0}
+  66.7%{transform:scale(.5);opacity:.9;animation-timing-function:var(--pop)}
+  82%{transform:scale(3.2);opacity:0}100%{opacity:0}}
+
+/* ── Pulso de resultado ────────────────────────────────── */
+.fx-pill-wrap{isolation:isolate}
+.fx-pill-wrap::before{content:"";position:absolute;inset:0 6px;border-radius:24px;background:#d5ef14;
+  filter:blur(14px);opacity:0;z-index:-1;animation:fx-bloom var(--L) linear infinite}
+@keyframes fx-bloom{0%,66%{opacity:0;transform:scale(.8)}
+  71%{opacity:.8;transform:scale(1.05);animation-timing-function:var(--amb)}92%,100%{opacity:0;transform:scale(1)}}
+.fx-pill{animation:fx-pill var(--L) linear infinite}
+@keyframes fx-pill{0%,66%{transform:translateY(0) scale(1);animation-timing-function:var(--pop)}
+  70%{transform:translateY(-2px) scale(1.035);animation-timing-function:var(--amb)}
+  84%,100%{transform:translateY(0) scale(1)}}
+
+/* Checks: "tick" — se contraen y rebotan. Se programan con --at (segundos del ciclo) */
+.fx-pop{animation:fx-pop var(--L) linear infinite;animation-delay:calc(var(--at,4s) - var(--L))}
+@keyframes fx-pop{0%{transform:scale(1)}
+  2%{transform:scale(.6);animation-timing-function:var(--pop)}
+  7%{transform:scale(1.25);animation-timing-function:var(--amb)}
+  12%,100%{transform:scale(1)}}
+.fx-pop-pill{--at:3.95s}.fx-pop-a1{--at:4.2s}.fx-pop-a2{--at:4.35s}.fx-pop-out{--at:4.5s}
+
+/* Accesibilidad: sin movimiento, se muestra el diseño estático */
+@media (prefers-reduced-motion:reduce){
+  .aller-g *,.aller-g *::before,.aller-g *::after{animation:none!important}
+  .aller-g .fx-pt,.aller-g .fx-shock{display:none}}
+
+/* Clear Direction · proceso: la prioridad se define y el icono de flujos da un giro completo */
+.fx-bar{transform-origin:0 50%;animation:g1-bar var(--L) linear infinite}
+@keyframes g1-bar{0%,38%{transform:scaleX(.3);animation-timing-function:var(--pop)}
+  60%{transform:scaleX(1)}88%{transform:scaleX(1);animation-timing-function:var(--amb)}100%{transform:scaleX(.3)}}
+.fx-flows{animation:g-proc var(--L) linear infinite;transform-origin:28px 36px}
+@keyframes g-proc{0%,40%{transform:rotate(0);animation-timing-function:cubic-bezier(.65,0,.35,1)}60%,100%{transform:rotate(360deg)}}
+.fx-rocket{animation:g1-rocket var(--L) linear infinite}
+@keyframes g1-rocket{0%,72%{transform:translate(0,0);animation-timing-function:var(--pop)}
+  77%{transform:translate(1.5px,-1.5px);animation-timing-function:var(--amb)}88%,100%{transform:translate(0,0)}}
+
+</style>
+<style>
+html[data-theme=dark],html[data-theme=dark] body,html[data-theme=dark] .aller-g{background:#0b0b0c}
+html[data-theme=dark] [class~="bg-white"],html[data-theme=dark] [class~="bg-[rgba(255,255,255,0.88)]"],html[data-theme=dark] [class~="bg-[rgba(255,255,255,0.96)]"],html[data-theme=dark] [class~="bg-[rgba(255,255,255,0.72)]"]{background-color:#161719}
+html[data-theme=dark] [class~="bg-[#f9fafb]"],html[data-theme=dark] [class~="bg-[var(--color\\/grayscale\\/surface\\/bg-1,#f9fafb)]"]{background-color:#1d1e21}
+html[data-theme=dark] [class~="bg-[#f2f4f5]"]{background-color:#202125}
+html[data-theme=dark] [class~="bg-[#dadee2]"],html[data-theme=dark] [class~="bg-[#d6d6d6]"]{background-color:#2e3034}
+html[data-theme=dark] [class~="text-[#121212]"]{color:#f2f2f0}
+html[data-theme=dark] [class~="text-[#787878]"]{color:#8d9095}
+html[data-theme=dark] [class~="border-white"],html[data-theme=dark] [class~="border-[#f2f4f5]"]{border-color:#25272b}
+html[data-theme=dark] [class~="from-[#d6d6d6]"]{--tw-gradient-from:#2e3034}
+html[data-theme=dark] [class~="to-[#b8b8b8]"]{--tw-gradient-to:#3c3e43}
+html[data-theme=dark] .aller-g>div{background-color:#0b0b0c}
+html[data-theme=dark] :is(img[src$="g1-12.svg"],img[src$="g1-15.svg"],img[src$="g1-20.svg"],img[src$="g1-21.svg"],img[src$="g1-22.svg"],img[src$="g1-23.svg"]){filter:invert(1) hue-rotate(180deg)}
+html[data-theme=dark] .fx-shadow{box-shadow:0 1px 0 #ffffff0d inset,0 12px 32px #0008}
+</style></head>
+<body>
+<div class="aller-g-embed" role="img" aria-label="AI Feature Sprint">
+<div class="aller-g">
+<div class="bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] relative size-full" data-node-id="5099:58609">
+  <div class="absolute h-[12px] left-[146px] top-[44px] w-[198px] fx-glow" data-node-id="5099:58610">
+    <div class="absolute inset-[-466.67%_-28.28%]"><img alt="" class="block max-w-none size-full" src="img/g1-1.svg" /></div>
+  </div>
+  <div class="absolute h-[6px] left-[179px] mix-blend-plus-lighter top-[47px] w-[132px] fx-glow fx-glow-2" data-node-id="5099:58611">
+    <div class="absolute inset-[-1666.67%_-75.76%]"><img alt="" class="block max-w-none size-full" src="img/g1-2.svg" /></div>
+  </div>
+  <div class="absolute backdrop-blur-[6px] bg-[rgba(255,255,255,0.88)] border border-solid border-white fx-shadow h-[160px] left-[146px] rounded-[var(--xl,8px)] top-[50px] w-[198px]" data-node-id="5099:58615">
+    <div class="absolute contents left-[10px] top-[15px]" data-node-id="5099:58616">
+      <div class="absolute bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] h-[60px] left-[131px] rounded-[var(--xl,8px)] top-[92px] w-[56px]" data-node-id="5099:58617">
+        <div class="-translate-y-1/2 absolute flex flex-col fx-raj justify-center leading-[0] left-[calc(50%-9px)] text-[10px] text-[#121212] top-[9px] whitespace-nowrap"><p class="leading-[8px]">SHIP</p></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[13px] rounded-[9px] top-[46px] w-[36px]"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[13px] rounded-[9px] top-[52px] w-[21px]"></div>
+        <div class="absolute left-[6px] size-[3px] top-[46px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-3.svg" /></div>
+        <div class="absolute left-[6px] size-[3px] top-[52px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-4.svg" /></div>
+        <div class="absolute left-[18px] overflow-clip size-[20px] top-[19px] fx-icon-mvp" data-node-id="5099:58623">
+          <div class="absolute h-[15px] left-[3.33px] top-[2.5px] w-[13.333px]"><div class="absolute inset-[-4.44%_-5%]"><img alt="" class="block max-w-none size-full" src="img/g1-5.svg" /></div></div>
+        </div>
+      </div>
+      <div class="absolute bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] h-[60px] left-[11px] rounded-[var(--xl,8px)] top-[92px] w-[116px]" data-node-id="5099:58624">
+        <div class="-translate-y-1/2 absolute flex flex-col fx-raj justify-center leading-[0] left-[8px] text-[10px] text-[#121212] top-[12px] whitespace-nowrap"><p class="leading-[8px]">EVALS</p></div>
+        <div class="absolute bg-[#d5fe00] h-[3px] left-[15px] rounded-[9px] top-[21px] w-[70px] fx-bar" data-node-id="5099:58626"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[30px] w-[51px]"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[39px] w-[67px]"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[48px] w-[35px]"></div>
+        <div class="absolute left-[8px] size-[3px] top-[21px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-6.svg" /></div>
+        <div class="absolute left-[8px] size-[3px] top-[30px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-7.svg" /></div>
+        <div class="absolute left-[8px] size-[3px] top-[39px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-8.svg" /></div>
+        <div class="absolute left-[8px] size-[3px] top-[48px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-9.svg" /></div>
+      </div>
+      <div class="absolute bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] h-[72px] left-[11px] rounded-[var(--xl,8px)] top-[16px] w-[56px]" data-node-id="5099:58634">
+        <div class="-translate-y-1/2 absolute flex flex-col fx-raj justify-center leading-[0] left-[calc(50%-14px)] text-[10px] text-[#121212] top-[12px] whitespace-nowrap"><p class="leading-[8px]">GOAL</p></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[57px] w-[24px]"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[62px] w-[17px]"></div>
+        <div class="absolute left-[8px] size-[3px] top-[57px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-10.svg" /></div>
+        <div class="absolute left-[8px] size-[3px] top-[62px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-11.svg" /></div>
+        <div class="absolute inset-[30.56%_27.96%_36.11%_30.36%] fx-icon-goal" data-node-id="5099:58641">
+          <div class="absolute inset-[-3.13%_-3.22%_-3.12%_-3.21%]"><img alt="" class="block max-w-none size-full" src="img/g1-12.svg" /></div>
+        </div>
+      </div>
+      <div class="absolute bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] h-[72px] left-[71px] rounded-[var(--xl,8px)] top-[16px] w-[56px]" data-node-id="5099:58647">
+        <div class="-translate-y-1/2 absolute flex flex-col fx-raj justify-center leading-[0] left-[calc(50%-14px)] text-[10px] text-[#121212] top-[12px] whitespace-nowrap"><p class="leading-[8px]">DATA</p></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[57px] w-[34px]"></div>
+        <div class="absolute bg-[#dadee2] h-[3px] left-[15px] rounded-[9px] top-[62px] w-[24px]"></div>
+        <div class="absolute left-[8px] size-[3px] top-[57px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-13.svg" /></div>
+        <div class="absolute left-[8px] size-[3px] top-[62px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-14.svg" /></div>
+        <div class="absolute inset-[33.33%_29.56%_38.89%_30.75%] fx-icon-users" data-node-id="5099:58653">
+          <div class="absolute inset-[-3.12%_-2.81%]"><img alt="" class="block max-w-none size-full" src="img/g1-15.svg" /></div>
+        </div>
+      </div>
+      <div class="absolute bg-[var(--color\/grayscale\/surface\/bg-1,#f9fafb)] h-[72px] left-[131px] rounded-[var(--xl,8px)] top-[16px] w-[56px]" data-node-id="5099:58660">
+        <div class="absolute inset-0 fx-flows">
+          <div class="absolute left-[26px] size-[3px] top-[34px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-16.svg" /></div>
+          <div class="absolute left-[24px] size-[7px] top-[32px]"><div class="absolute inset-[-7.14%]"><img alt="" class="block max-w-none size-full" src="img/g1-17.svg" /></div></div>
+          <div class="absolute left-[27px] size-px top-[31px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-18.svg" /></div>
+          <div class="absolute left-[27px] size-px top-[39px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-19.svg" /></div>
+          <div class="absolute h-[4px] left-[17px] top-[27px] w-[6px]"><div class="absolute inset-[-13.24%_-8.82%]"><img alt="" class="block max-w-none size-full" src="img/g1-20.svg" /></div></div>
+          <div class="absolute flex h-[4px] items-center justify-center left-[33px] top-[41px] w-[6px]"><div class="flex-none rotate-180"><div class="h-[4px] relative w-[6px]"><div class="absolute inset-[-13.24%_-8.82%]"><img alt="" class="block max-w-none size-full" src="img/g1-21.svg" /></div></div></div></div>
+          <div class="absolute border-[1.059px] border-[#121212] border-solid left-[25px] rounded-[1.412px] size-[6px] top-[24px]"></div>
+          <div class="absolute border-[1.059px] border-[#121212] border-solid left-[25px] rounded-[1.412px] size-[6px] top-[42px]"></div>
+          <div class="absolute flex h-[4px] items-center justify-center left-[33px] top-[27px] w-[6px]"><div class="-scale-y-100 flex-none rotate-180"><div class="h-[4px] relative w-[6px]"><div class="absolute inset-[-13.24%_-8.82%]"><img alt="" class="block max-w-none size-full" src="img/g1-22.svg" /></div></div></div></div>
+          <div class="absolute flex h-[4px] items-center justify-center left-[17px] top-[41px] w-[6px]"><div class="-scale-y-100 flex-none"><div class="h-[4px] relative w-[6px]"><div class="absolute inset-[-13.24%_-8.82%]"><img alt="" class="block max-w-none size-full" src="img/g1-23.svg" /></div></div></div></div>
+          <div class="absolute border-[1.059px] border-[#121212] border-solid left-[14px] rounded-[1.412px] size-[6px] top-[33px]"></div>
+          <div class="absolute border-[1.059px] border-[#121212] border-solid left-[35px] rounded-[1.412px] size-[6px] top-[33px]"></div>
+        </div>
+        <div class="-translate-y-1/2 absolute flex flex-col fx-raj justify-center leading-[0] left-[calc(50%-15px)] text-[10px] text-[#121212] top-[12px] whitespace-nowrap"><p class="leading-[8px]">MODEL</p></div>
+      </div>
+    </div>
+    <div class="absolute bg-white flex flex-col items-center justify-center left-[4px] p-[2px] rounded-[8px] top-[4px]">
+      <div class="flex gap-[2px] items-center relative shrink-0 w-full">
+        <div class="relative shrink-0 size-[3px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-24.svg" /></div>
+        <div class="relative shrink-0 size-[3px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-25.svg" /></div>
+        <div class="relative shrink-0 size-[3px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-26.svg" /></div>
+      </div>
+    </div>
+    <div class="absolute bg-white flex flex-col items-center justify-center left-[185px] p-[2px] rounded-[8px] top-[4px]">
+      <div class="flex items-center relative shrink-0 w-full"><div class="relative shrink-0 size-[3px]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-27.svg" /></div></div>
+    </div>
+  </div>
+
+  <div class="fx-float fx-d1 absolute inset-0 pointer-events-none">
+    <div class="absolute backdrop-blur-[6px] bg-white border border-solid border-white h-[56px] left-[384px] rounded-[8px] top-[101px] w-[80px]" data-node-id="5099:58682">
+      <div class="absolute bg-[#dadee2] h-[3px] left-[7px] rounded-[9px] top-[35px] w-[36px]"></div>
+      <div class="absolute bg-[#dadee2] h-[3px] left-[7px] rounded-[9px] top-[41px] w-[21px]"></div>
+      <div class="absolute left-[7px] overflow-clip size-[20px] top-[7px] fx-rocket">
+        <div class="absolute inset-[12.62%_12.5%]"><div class="absolute inset-[-4.42%_-4.4%_-4.43%_-4.41%]"><img alt="" class="block max-w-none size-full" src="img/g1-28.svg" /></div></div>
+      </div>
+      <div class="absolute left-[57px] overflow-clip size-[16px] top-[33px] fx-pop fx-pop-out">
+        <div class="absolute inset-[12.5%]"><div class="absolute inset-[-4.17%]"><img alt="" class="block max-w-none size-full" src="img/g1-29.svg" /></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute h-0 left-[349px] top-[130px] w-[30px] fx-flow" data-node-id="5099:58687">
+    <div class="absolute inset-[-5.52px_-2.5%]"><img alt="" class="block max-w-none size-full" src="img/g1-30.svg" /></div>
+  </div>
+
+  <div class="fx-float fx-d2 absolute inset-0 pointer-events-none">
+    <div class="absolute backdrop-blur-[6px] bg-white border border-solid border-white h-[32px] left-[16px] rounded-[8px] top-[113px] w-[72px]" data-node-id="5099:58688">
+      <div class="absolute left-[3px] overflow-clip size-[16px] top-[3px]">
+        <div class="absolute inset-[9.39%_9.39%_9.37%_9.38%]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-31.svg" /></div>
+      </div>
+      <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[7px] w-[33px]"></div>
+      <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[14px] w-[39px]"></div>
+      <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[21px] w-[27px]"></div>
+    </div>
+  </div>
+  <div class="absolute h-0 left-[88px] top-[129.5px] w-[52.5px] fx-flow" data-node-id="5099:58693">
+    <div class="absolute inset-[-5.52px_-1.43%]"><img alt="" class="block max-w-none size-full" src="img/g1-32.svg" /></div>
+  </div>
+  <div class="absolute left-[80px] size-[16px] top-[121px] fx-ping fx-p2"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-33.svg" /></div>
+
+  <div class="fx-float fx-d3 absolute inset-0 pointer-events-none">
+    <div class="absolute flex h-[44.676px] items-center justify-center left-[24px] top-[158px] w-[74.35px]" data-node-id="5099:58698">
+      <div class="-skew-x-4 flex-none rotate-[-10.3deg]">
+        <div class="backdrop-blur-[6px] bg-white border border-solid border-white h-[32px] relative rounded-[8px] w-[72px]">
+          <div class="absolute left-[3px] overflow-clip size-[16px] top-[3px]"><div class="absolute inset-[9.38%]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-34.svg" /></div></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[19px] rounded-[9px] top-[7px] w-[37px]"></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[19px] rounded-[9px] top-[14px] w-[43px]"></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[19px] rounded-[9px] top-[21px] w-[30px]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fx-float fx-d4 absolute inset-0 pointer-events-none">
+    <div class="absolute left-[399px] size-[40px] top-[206px]" data-node-id="5099:58703"><img alt="" class="absolute block inset-0 max-w-none size-full" height="40" src="img/g1-35.svg" width="40" /></div>
+    <div class="absolute left-[427px] overflow-clip size-[16px] top-[234px] fx-pop fx-pop-a1"><div class="absolute inset-[9.38%_9.38%_9.37%_9.38%]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-36.svg" /></div></div>
+  </div>
+  <div class="fx-float fx-d5 absolute inset-0 pointer-events-none">
+    <div class="absolute left-[47px] size-[40px] top-[214px]" data-node-id="5099:58704"><img alt="" class="absolute block inset-0 max-w-none size-full" height="40" src="img/g1-37.svg" width="40" /></div>
+    <div class="absolute left-[75px] overflow-clip size-[16px] top-[242px] fx-pop fx-pop-a2"><div class="absolute inset-[9.38%_9.38%_9.37%_9.38%]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-38.svg" /></div></div>
+  </div>
+
+  <div class="-translate-x-1/2 absolute left-1/2 top-[337px] fx-pill-wrap">
+    <div class="backdrop-blur-[6px] bg-[rgba(255,255,255,0.96)] border border-solid border-white fx-shadow flex flex-col items-center justify-center px-[24px] py-[8px] rounded-[24px] fx-pill" data-node-id="5099:58707">
+      <div class="flex gap-[8px] items-center relative shrink-0 w-full">
+        <div class="overflow-clip relative shrink-0 size-[16px] fx-pop fx-pop-pill"><div class="absolute inset-[12.5%]"><div class="absolute inset-[-4.17%]"><img alt="" class="block max-w-none size-full" src="img/g1-39.svg" /></div></div></div>
+        <div class="flex flex-col fx-raj justify-center leading-[0] relative shrink-0 text-[16px] text-[#121212] whitespace-nowrap"><p class="leading-[16px]">LIVE IN 14 DAYS</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute flex h-[33.379px] items-center justify-center left-[92.76px] top-[81.16px] w-[49.491px] fx-flow" data-node-id="5099:58711">
+    <div class="flex-none rotate-[4.77deg]"><div class="h-[29.556px] relative w-[47.197px]"><div class="absolute inset-[-2.54%_-1.59%_-14.18%_0]"><img alt="" class="block max-w-none size-full" src="img/g1-40.svg" /></div></div></div>
+  </div>
+  <div class="fx-float fx-d6 absolute inset-0 pointer-events-none">
+    <div class="absolute flex h-[43.263px] items-center justify-center left-[25px] top-[55px] w-[71.114px]" data-node-id="5099:58712">
+      <div class="flex-none rotate-9 scale-y-99 skew-x-9">
+        <div class="backdrop-blur-[6px] bg-white border border-solid border-white h-[32px] relative rounded-[8px] w-[72px]">
+          <div class="absolute left-[3px] overflow-clip size-[16px] top-[3px]"><div class="absolute inset-[13.93%_24.79%_13.93%_24.23%]"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-41.svg" /></div></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[7px] w-[33px]"></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[14px] w-[39px]"></div>
+          <div class="absolute bg-[#dadee2] h-[3px] left-[23px] rounded-[9px] top-[21px] w-[27px]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute h-[26px] left-[96px] top-[191px] w-[42px] fx-flow fx-rev" data-node-id="5099:58717">
+    <div class="absolute inset-[-21.24%_-1.79%_-2.88%_-2.04%]"><img alt="" class="block max-w-none size-full" src="img/g1-42.svg" /></div>
+  </div>
+  <div class="absolute flex h-[26px] items-center justify-center left-[352px] top-[191px] w-[42px] fx-flow" data-node-id="5099:58718">
+    <div class="-scale-y-100 flex-none rotate-180"><div class="h-[26px] relative w-[42px]"><div class="absolute inset-[-21.24%_-1.79%_-2.88%_-2.04%]"><img alt="" class="block max-w-none size-full" src="img/g1-43.svg" /></div></div></div>
+  </div>
+  <div class="absolute h-[123px] left-[146px] top-[210px] w-[186px] fx-fan" data-node-id="5099:58719">
+    <div class="absolute inset-[-1.63%_-0.4%_-0.61%_-0.4%]"><svg class="fx-svg" preserveAspectRatio="none" overflow="visible" style="display:block;position:absolute;inset:0" width="100%" height="100%" viewBox="0 0 187.491 125.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Element Group">
+<path id="Vector Shape" d="M0.745535 2.79688C1.87968 13.1445 12.9943 34.6357 48.3797 37.8196C83.765 41.0035 93.3675 70.985 93.7455 85.5778" stroke="url(#paint0_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_2" d="M19.3451 2.79688C20.2525 13.1445 29.1442 34.6357 57.4525 37.8196C85.7608 41.0035 93.4427 70.985 93.7451 85.5778" stroke="url(#paint1_linear_0_45)" stroke-width="1.5"/>
+
+
+
+
+
+
+<path id="Vector Shape_3" d="M43.6694 2.79688C44.2801 13.1445 50.2649 34.6357 69.3185 37.8196C88.3722 41.0035 93.5427 70.985 93.7463 85.5778" stroke="url(#paint2_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_4" d="M62.269 2.79688C62.6528 13.1445 66.4147 34.6357 78.3913 37.8196C90.3679 41.0035 93.6179 70.985 93.7459 85.5778" stroke="url(#paint3_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_5" d="M186.746 2.79688C185.611 13.1445 174.497 34.6357 139.111 37.8196C103.726 41.0035 94.1236 70.985 93.7455 85.5778" stroke="url(#paint4_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_6" d="M168.146 2.79688C167.239 13.1445 158.347 34.6357 130.039 37.8196C101.73 41.0035 94.0484 70.985 93.7459 85.5778" stroke="url(#paint5_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_7" d="M143.822 2.79688C143.211 13.1445 137.226 34.6357 118.173 37.8196C99.1189 41.0035 93.9483 70.985 93.7448 85.5778" stroke="url(#paint6_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_8" d="M125.222 2.79688C124.838 13.1445 121.076 34.6357 109.1 37.8196C97.1232 41.0035 93.8731 70.985 93.7452 85.5778" stroke="url(#paint7_linear_0_45)" stroke-width="1.5"/>
+<path id="Vector Shape_9" d="M93.2152 125.53C93.5081 125.823 93.983 125.823 94.2759 125.53L99.0488 120.757C99.3417 120.464 99.3417 119.99 99.0488 119.697C98.7559 119.404 98.2811 119.404 97.9882 119.697L93.7455 123.939L89.5029 119.697C89.21 119.404 88.7351 119.404 88.4422 119.697C88.1493 119.99 88.1493 120.464 88.4422 120.757L93.2152 125.53ZM93.7455 2H92.9955V125H93.7455H94.4955V2H93.7455Z" fill="url(#paint8_linear_0_45)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_45" x="83.7455" y="21" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<filter id="filter1_d_0_45" x="35.7455" y="4" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<filter id="filter2_d_0_45" x="23.7455" y="25" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<filter id="filter3_d_0_45" x="124.746" y="16" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<filter id="filter4_d_0_45" x="94.7455" y="46" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<filter id="filter5_d_0_45" x="156.746" y="0" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.392157 0 0 0 0 0.415686 0 0 0 0 0.929412 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_45"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_45" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_45" x1="47.2455" y1="2.79687" x2="47.2455" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_45" x1="56.5451" y1="2.79687" x2="56.5451" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_45" x1="68.7078" y1="2.79687" x2="68.7078" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_45" x1="78.0074" y1="2.79687" x2="78.0074" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_45" x1="140.246" y1="2.79687" x2="140.246" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_45" x1="130.946" y1="2.79688" x2="130.946" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint6_linear_0_45" x1="118.783" y1="2.79687" x2="118.783" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint7_linear_0_45" x1="109.484" y1="2.79687" x2="109.484" y2="85.5778" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+<linearGradient id="paint8_linear_0_45" x1="94.2455" y1="2" x2="94.2455" y2="125" gradientUnits="userSpaceOnUse">
+<stop stop-color="#646AED" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#646AED" stop-opacity="0.4"/>
+<stop offset="1" stop-color="#646AED"/>
+</linearGradient>
+</defs>
+</svg>
+<i class="fx-pt" style="offset-path:path('M0.745535 2.79688C1.87968 13.1445 12.9943 34.6357 48.3797 37.8196C83.765 41.0035 93.3675 70.985 93.7455 85.5778');animation-delay:0s,0s"></i><i class="fx-pt fx-burst" style="offset-path:path('M0.745535 2.79688C1.87968 13.1445 12.9943 34.6357 48.3797 37.8196C83.765 41.0035 93.3675 70.985 93.7455 85.5778');animation-delay:0.00s"></i><i class="fx-pt" style="offset-path:path('M19.3451 2.79688C20.2525 13.1445 29.1442 34.6357 57.4525 37.8196C85.7608 41.0035 93.4427 70.985 93.7451 85.5778');animation-delay:-0.75s,-0.75s"></i><i class="fx-pt fx-burst" style="offset-path:path('M19.3451 2.79688C20.2525 13.1445 29.1442 34.6357 57.4525 37.8196C85.7608 41.0035 93.4427 70.985 93.7451 85.5778');animation-delay:-0.06s"></i><i class="fx-pt" style="offset-path:path('M43.6694 2.79688C44.2801 13.1445 50.2649 34.6357 69.3185 37.8196C88.3722 41.0035 93.5427 70.985 93.7463 85.5778');animation-delay:-1.5s,-1.5s"></i><i class="fx-pt fx-burst" style="offset-path:path('M43.6694 2.79688C44.2801 13.1445 50.2649 34.6357 69.3185 37.8196C88.3722 41.0035 93.5427 70.985 93.7463 85.5778');animation-delay:0.00s"></i><i class="fx-pt" style="offset-path:path('M62.269 2.79688C62.6528 13.1445 66.4147 34.6357 78.3913 37.8196C90.3679 41.0035 93.6179 70.985 93.7459 85.5778');animation-delay:-0.25s,-0.25s"></i><i class="fx-pt fx-burst" style="offset-path:path('M62.269 2.79688C62.6528 13.1445 66.4147 34.6357 78.3913 37.8196C90.3679 41.0035 93.6179 70.985 93.7459 85.5778');animation-delay:-0.06s"></i><i class="fx-pt" style="offset-path:path('M186.746 2.79688C185.611 13.1445 174.497 34.6357 139.111 37.8196C103.726 41.0035 94.1236 70.985 93.7455 85.5778');animation-delay:-1s,-1s"></i><i class="fx-pt fx-burst" style="offset-path:path('M186.746 2.79688C185.611 13.1445 174.497 34.6357 139.111 37.8196C103.726 41.0035 94.1236 70.985 93.7455 85.5778');animation-delay:0.00s"></i><i class="fx-pt" style="offset-path:path('M168.146 2.79688C167.239 13.1445 158.347 34.6357 130.039 37.8196C101.73 41.0035 94.0484 70.985 93.7459 85.5778');animation-delay:-1.75s,-1.75s"></i><i class="fx-pt fx-burst" style="offset-path:path('M168.146 2.79688C167.239 13.1445 158.347 34.6357 130.039 37.8196C101.73 41.0035 94.0484 70.985 93.7459 85.5778');animation-delay:-0.06s"></i><i class="fx-pt" style="offset-path:path('M143.822 2.79688C143.211 13.1445 137.226 34.6357 118.173 37.8196C99.1189 41.0035 93.9483 70.985 93.7448 85.5778');animation-delay:-0.5s,-0.5s"></i><i class="fx-pt fx-burst" style="offset-path:path('M143.822 2.79688C143.211 13.1445 137.226 34.6357 118.173 37.8196C99.1189 41.0035 93.9483 70.985 93.7448 85.5778');animation-delay:0.00s"></i><i class="fx-pt" style="offset-path:path('M125.222 2.79688C124.838 13.1445 121.076 34.6357 109.1 37.8196C97.1232 41.0035 93.8731 70.985 93.7452 85.5778');animation-delay:-1.25s,-1.25s"></i><i class="fx-pt fx-burst" style="offset-path:path('M125.222 2.79688C124.838 13.1445 121.076 34.6357 109.1 37.8196C97.1232 41.0035 93.8731 70.985 93.7452 85.5778');animation-delay:-0.06s"></i></div>
+  </div>
+  <div class="absolute left-[88px] size-[16px] top-[73px] fx-ping fx-p1"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-44.svg" /></div>
+  <div class="absolute h-[30.5px] left-[98px] top-[142px] w-[40.5px] fx-flow" data-node-id="5099:58739">
+    <div class="absolute inset-[-18.11%_-1.85%_-3.14%_-2.37%]"><img alt="" class="block max-w-none size-full" src="img/g1-45.svg" /></div>
+  </div>
+  <div class="absolute left-[88px] size-[16px] top-[164px] fx-ping fx-p3"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-46.svg" /></div>
+  <div class="absolute left-[227px] size-[24px] top-[281px] fx-node" data-node-id="5099:58744"><img alt="" class="absolute block inset-0 max-w-none size-full" src="img/g1-47.svg" /><span class="fx-shock"></span></div>
+</div>
+
+</div>
+</div>
+<script>
+(()=>{
+  const wrap=document.querySelector('.aller-g-embed'),g=wrap.firstElementChild;
+  const q=new URLSearchParams(location.search),stage=q.get('stage');
+  if(stage){ // render para redes: lienzo fijo, gráfico centrado y escalado
+    const [W,H]=stage.split('x').map(Number),s=+(q.get('scale')||2);
+    document.body.classList.add('stage');
+    Object.assign(document.body.style,{width:W+'px',height:H+'px'});
+    Object.assign(wrap.style,{width:480*s+'px',height:501*s+'px',left:(W-480*s)/2+'px',top:(H-501*s)/2+'px'});
+    wrap.style.setProperty('--s',s);
+  }else{
+    const fit=()=>wrap.style.setProperty('--s',wrap.clientWidth/480);
+    new ResizeObserver(fit).observe(wrap);fit();
+  }
+  // Seek determinista (usado para exportar MP4): pausa todo y va al segundo t del ciclo
+  window.__seek=t=>document.getAnimations().forEach(a=>{a.pause();a.currentTime=t*1000;});
+})();
+</script>
+<script>(()=>{const me=document.documentElement;let p;try{p=parent.document.documentElement}catch(e){}
+const sync=()=>{me.dataset.theme=(p&&p.dataset.theme)||localStorage.getItem('theme')||'light'};sync();
+if(p&&p!==me)new MutationObserver(sync).observe(p,{attributes:true,attributeFilter:['data-theme']});})();</script></body>
+</html>
