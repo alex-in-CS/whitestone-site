@@ -201,10 +201,10 @@ main { position: relative; max-width: 1440px; margin: 0 auto; }
   display: flex; align-items: center; justify-content: space-between;
   font: 600 12px/12px var(--display); color: var(--ink-30);
 }
-.hero-copy { position: absolute; z-index: 10; top: 288px; left: 121px; width: 591px; display: flex; flex-direction: column; gap: 24px; }
+.hero-copy { position: absolute; z-index: 10; top: 256px; left: 121px; width: 640px; display: flex; flex-direction: column; gap: 24px; }
 .hero-copy .stack { display: flex; flex-direction: column; gap: 16px; }
 .hero-copy .words { display: flex; flex-direction: column; gap: 24px; color: var(--ink-30); }
-.h-two { font: 600 48px/56px var(--display); }
+.h-two { font: 600 64px/66px var(--display); letter-spacing: -.015em; }
 .h-two .k { color: var(--ink); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .band-hero {
@@ -469,3 +469,6 @@ main .ws-facts span { font-size: 14px; line-height: 20px; font-weight: 500; colo
   .float-wa { width: 44px; height: 44px; }
   .float-quote { --btn-px: 22px; height: 44px; }
 }
+
+/* hero headline on phones: bigger than before, without taking the whole screen */
+@media (max-width: 639.98px) { .h-two { font-size: clamp(42px, 13.5vw, 60px); line-height: 1.04; } }
