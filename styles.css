@@ -392,3 +392,6 @@ main li:has(> div > .ws-card-list) > div { position: relative; z-index: 1; }
    'translate' is separate from the reveal's 'transform', and the reveal's own transition wins until it is done. */
 main .ws-problems li[data-reveal] { transition: translate .5s var(--ease-spring-soft); }
 main .ws-problems li[data-reveal]:hover { translate: 0 -6px; }
+
+/* "More than a SHINY DEMO": the two big words were lime on lime; black ink in both themes */
+main section[aria-label="More than a shiny demo"] > div[aria-hidden] > p:nth-of-type(n+3) { color: #121212; }
