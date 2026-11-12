@@ -209,7 +209,7 @@ main { position: relative; max-width: 1440px; margin: 0 auto; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .band-hero {
   position: absolute; top: 873px; left: 16px; width: 1408px; height: 102px; border-radius: 999px;
-  background: linear-gradient(to left, #d5fe0000, var(--lime)); mix-blend-mode: multiply;
+  background: linear-gradient(to right, var(--lime) 0%, var(--lime) 30%, #d5fe0000 80%); mix-blend-mode: multiply;
 }
 .hero-figure { position: absolute; inset: 0; pointer-events: none; }
 #statue, .hero-still { position: absolute; top: 81px; left: 700px; width: 740px; height: 911px; pointer-events: none; mix-blend-mode: multiply; }
@@ -220,6 +220,12 @@ main { position: relative; max-width: 1440px; margin: 0 auto; }
 .hero-figure.is-still #statue { display: none; }
 [data-theme='dark'] #statue, [data-theme='dark'] .hero-still { mix-blend-mode: normal; }   /* same dark stone in both themes */
 [data-theme='dark'] .band-hero { mix-blend-mode: normal; opacity: .9; }
+/* the line in the lime strip: black ink in both themes */
+.band-line {
+  position: absolute; z-index: 1; top: 873px; left: 121px; height: 102px; margin: 0;
+  display: flex; align-items: center; white-space: nowrap;
+  font: 700 40px/1 var(--display); letter-spacing: .005em; text-transform: uppercase; color: #121212;
+}
 
 /* logo strip */
 .clients { position: absolute; inset-inline: 0; top: 992px; }
@@ -257,6 +263,8 @@ main { position: relative; max-width: 1440px; margin: 0 auto; }
   .hero-figure { position: relative; inset: auto; aspect-ratio: 658 / 911; max-width: 460px; margin: 24px auto 0; }
   #statue, .hero-still { inset: 0; width: 100%; height: 100%; top: 0; left: 0; }
   .band-hero { top: auto; bottom: 7%; left: 0; width: 100%; height: 11%; }
+  .band-line { position: relative; inset: auto; height: auto; margin: 32px 0 0; padding: 18px 24px; border-radius: 999px; white-space: normal;
+    font-size: 22px; line-height: 1.1; background: linear-gradient(to left, #d5fe0000, var(--lime)); }
   .clients { position: relative; top: auto; border-top: 1px solid var(--line); margin-inline: -16px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -379,3 +387,8 @@ main li:has(> div > .ws-card-list) > div { position: relative; z-index: 1; }
 
 /* "Start a project": the brand lime glow inside the button stays, but softer so the white label reads */
 .btn-lime .btn-shader-glow { box-shadow: inset 0 0 14px #d5fe0040; }
+
+/* problem items (Unclear scope, Low user trust, ...): a slight rise on hover, nothing else.
+   'translate' is separate from the reveal's 'transform', and the reveal's own transition wins until it is done. */
+main .ws-problems li[data-reveal] { transition: translate .5s var(--ease-spring-soft); }
+main .ws-problems li[data-reveal]:hover { translate: 0 -6px; }
