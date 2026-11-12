@@ -28,6 +28,26 @@
     }, 4000);
   });
 
+  // ---- menu under 1024px: the burger opens the nav links as a panel under the pill
+  const nav = document.getElementById('nav'), menuBtn = document.getElementById('menu-btn');
+  const setMenu = (open) => {
+    nav.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('.nav-links a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); } });
+  document.addEventListener('click', (e) => { if (nav.classList.contains('is-open') && !nav.contains(e.target)) setMenu(false); });
+  matchMedia('(min-width: 1024px)').addEventListener('change', (m) => { if (m.matches) setMenu(false); });
+
+  // ---- floating "Get a quote": on phones and tablets it waits until the hero is scrolled past
+  const float = document.querySelector('.float');
+  if (float) {
+    const onScroll = () => float.classList.toggle('is-on', scrollY > innerHeight * 0.75);
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
   // ---- light / dark
   const root = document.documentElement, btn = document.getElementById('theme-btn');
   const label = () => btn.setAttribute('aria-label', root.dataset.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');

@@ -413,3 +413,59 @@ main .ws-facts span { font-size: 14px; line-height: 20px; font-weight: 500; colo
   font: 600 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-30);
 }
 @media (max-width: 1023.98px) { .clients-label { position: static; height: auto; padding: 20px 16px 0; justify-content: center; } }
+
+/* ================= phones and tablets (below 1024px) ================= */
+.menu-btn, .nav-menu-cta { display: none; }
+@media (max-width: 1023.98px) {
+  /* Aller's max-lg:hidden loses to our unlayered .btn display; make it win again */
+  .max-lg\:hidden { display: none !important; }
+
+  /* nav: logo, theme, Start a project, menu; the links open as a panel under the pill */
+  /* no position on the pill: the menu panel hangs from the whole nav (pill + tray) */
+  .nav-pill { justify-content: flex-start; gap: 8px; padding: 0 8px 0 24px; }
+  .menu-btn { order: 2; }
+  .nav-logo { flex-shrink: 0; }
+  .nav-logo img { height: 30px; }
+  .theme-btn { margin-left: auto; }
+  .nav-pill > .btn-lime { --btn-px: 28px; }
+  .menu-btn {
+    display: grid; place-content: center; gap: 6px; flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255, 255, 255, .08); transition: background .3s var(--ease-out-expo);
+  }
+  .menu-btn span { display: block; width: 18px; height: 1.5px; border-radius: 2px; background: #fff; transition: transform .35s var(--ease-out-expo); }
+  .nav.is-open .menu-btn span:first-child { transform: translateY(3.75px) rotate(45deg); }
+  .nav.is-open .menu-btn span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+  .nav.is-open .nav-links {
+    display: flex; flex-direction: column; gap: 0; position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+    padding: 12px; background: #121212; border-radius: 28px; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .5);
+    animation: menu-in .35s var(--ease-out-expo);
+  }
+  .nav.is-open .nav-links a { display: block; padding: 14px 16px; border-radius: 16px; font: 600 24px/1.2 var(--display); }
+  .nav.is-open .nav-links a:hover { opacity: 1; background: rgba(255, 255, 255, .06); }
+  .nav.is-open .nav-links a::before { display: none; }
+
+  /* hero: the strip line has its own pill here, so the desktop lime band goes */
+  .band-hero { display: none; }
+
+  /* footer wordmark: fit the width instead of the height */
+  footer .mix-blend-overlay svg[viewBox="0 0 1406 140"] { top: 50%; width: calc(100% - 32px); height: auto; translate: -50% -50%; }
+
+  /* floating buttons: hidden over the hero, smaller and tighter to the corner */
+  .float { right: 16px; bottom: 16px; transition: opacity .3s ease, transform .3s var(--ease-out-expo); }
+  .float:not(.is-on) { opacity: 0; transform: translateY(12px); pointer-events: none; }
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } }
+/* tablets: room for both clocks in the tray */
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .nav-tray { grid-template-columns: 1fr auto 1fr; justify-items: stretch; }
+  .nav-tray p:first-child, .nav-tray p:last-child { display: block; }
+}
+/* phones: Start a project moves into the menu, floating buttons get compact */
+@media (max-width: 519.98px) {
+  .nav-pill > .btn-lime { display: none; }
+  .nav-menu-cta { display: block; }
+  .nav.is-open .nav-menu-cta a { margin-top: 8px; background: var(--lime); color: #121212; text-align: center; }
+  .nav.is-open .nav-menu-cta a:hover { background: var(--lime); opacity: .9; }
+  .float-wa { width: 44px; height: 44px; }
+  .float-quote { --btn-px: 22px; height: 44px; }
+}
