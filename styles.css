@@ -399,3 +399,17 @@ main section[aria-label="More than a shiny demo"] > div[aria-hidden] > p:nth-of-
 /* nav tray: the city clock that steps London > Dubai > New York > Sydney */
 .clock-cycle { display: inline-block; transition: opacity .25s ease, transform .25s ease; }
 .clock-cycle.is-out { opacity: 0; transform: translateY(-4px); }
+
+/* case studies: three facts per project where a client quote would sit */
+main .ws-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+main .ws-facts li { display: flex; flex-direction: column; gap: 8px; }
+main .ws-facts strong { font: 700 40px/1 var(--display); letter-spacing: -.01em; color: var(--color-dark-950); white-space: nowrap; }
+main .ws-facts span { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-dark-30); }
+@media (max-width: 639.98px) { main .ws-facts { grid-template-columns: 1fr; gap: 16px; } main .ws-facts strong { font-size: 32px; } }
+
+/* "Built with" label on the stack strip under the hero */
+.clients-label {
+  position: absolute; z-index: 1; left: 16px; top: 0; height: 88px; margin: 0; display: flex; align-items: center;
+  font: 600 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-30);
+}
+@media (max-width: 1023.98px) { .clients-label { position: static; height: auto; padding: 20px 16px 0; justify-content: center; } }
