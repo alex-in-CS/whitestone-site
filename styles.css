@@ -395,3 +395,7 @@ main .ws-problems li[data-reveal]:hover { translate: 0 -6px; }
 
 /* "More than a SHINY DEMO": the two big words were lime on lime; black ink in both themes */
 main section[aria-label="More than a shiny demo"] > div[aria-hidden] > p:nth-of-type(n+3) { color: #121212; }
+
+/* nav tray: the city clock that steps London > Dubai > New York > Sydney */
+.clock-cycle { display: inline-block; transition: opacity .25s ease, transform .25s ease; }
+.clock-cycle.is-out { opacity: 0; transform: translateY(-4px); }

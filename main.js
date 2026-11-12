@@ -1,17 +1,32 @@
 // Clocks, theme, and Aller's reveals: fade / up on entering view, and headings that split into
 // lines and arrive through a short RGB "signal" glitch.
 (() => {
-  // ---- live clocks in the nav tray
+  // ---- live clocks in the nav tray. A clock with data-cycle steps through its cities every 4 s.
   const clocks = document.querySelectorAll('[data-clock]');
+  const LOCALE = { 'Europe/London': 'en-GB', 'Australia/Sydney': 'en-AU' };      // BST/GMT, AEDT/AEST
+  const FIXED = { 'Asia/Kolkata': 'IST', 'Asia/Dubai': 'GST' };                  // Intl only gives GMT+x
   const fmt = (tz) => new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit' });
-  const zone = (tz) => new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' })
+  const zone = (tz) => FIXED[tz] ?? new Intl.DateTimeFormat(LOCALE[tz] || 'en-US', { timeZone: tz, timeZoneName: 'short' })
     .formatToParts(new Date()).find((p) => p.type === 'timeZoneName')?.value ?? '';
-  const labels = [...clocks].map((el) => el.textContent.trim());
-  const tick = () => clocks.forEach((el, i) => {
-    const tz = el.dataset.clock;
-    el.textContent = `${labels[i]} | ${fmt(tz).format(new Date())} ${tz === 'Asia/Kolkata' ? 'IST' : zone(tz)}`;
+  const state = [...clocks].map((el) => {
+    const cities = el.dataset.cycle
+      ? el.dataset.cycle.split(';').map((c) => { const [tz, name] = c.split('='); return { tz, name }; })
+      : [{ tz: el.dataset.clock, name: el.textContent.trim() }];
+    return { el, cities, i: 0 };
   });
+  const show = (s) => { const { tz, name } = s.cities[s.i]; s.el.textContent = `${name} | ${fmt(tz).format(new Date())} ${zone(tz)}`; };
+  const tick = () => state.forEach(show);
   tick(); setInterval(tick, 15000);
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  state.filter((s) => s.cities.length > 1).forEach((s) => {
+    s.el.classList.add('clock-cycle');
+    setInterval(() => {
+      if (document.hidden) return;
+      const next = () => { s.i = (s.i + 1) % s.cities.length; show(s); s.el.classList.remove('is-out'); };
+      if (still) return next();
+      s.el.classList.add('is-out'); setTimeout(next, 250);
+    }, 4000);
+  });
 
   // ---- light / dark
   const root = document.documentElement, btn = document.getElementById('theme-btn');
